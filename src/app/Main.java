@@ -1,6 +1,5 @@
 package app;
 
-import java.lang.module.FindException;
 import java.util.Scanner;
 
 public class Main {
@@ -27,13 +26,13 @@ public class Main {
     private static void validateAmount(double balance, double withdrawal) {
         try {
             if (withdrawal > balance) {
-                throw new FindException("Insufficient funds!");
+                throw new FundsException("Insufficient funds!");
             } else {
                 balance = getBalance(balance, withdrawal);
                 System.out.printf("Funds are OK. Purchase paid." +
                         "%nBalance is USD %.2f", balance);
             }
-        } catch (FindException e) {
+        } catch (FundsException e) {
             System.out.println(e.getMessage());
         }
     }
